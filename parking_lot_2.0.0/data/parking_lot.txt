@@ -1,0 +1,16 @@
+create_parking_lot 8
+park PB-01-KL-1234
+park PB-01-KL-2999 
+park PB-01-BB-0001 
+status
+leave PB-01-BB-0001 3
+park DL-01-KL-7777
+park DL-01-KL-2701 
+park DL-01-KL-3141 
+park KA-01-HH-7777 
+leave KA-01-HH-7777 1
+leave PB-01-KL-1234 5
+leave HH-02-BB-4567 3
+park KA-01-BB-0001 Black
+park KA-01-HH-2701 Blue
+status

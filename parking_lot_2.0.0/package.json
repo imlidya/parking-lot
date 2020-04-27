@@ -1,0 +1,21 @@
+{
+    "name": "parking_lot",
+    "version": "1.0.0",
+    "description": "Parking lot design problem",
+    "main": "index.js",
+    "directories": {
+        "test": "tests"
+    },
+    "scripts": {
+        "start": "node src/index.js",
+        "test": "node scripts/test.js",
+        "test-unit": "mocha tests/spec.js",
+        "file-mode": "node src/index.js"
+    },
+    "dependencies": {
+        "async": "^3.2.0",
+        "chai": "^4.2.0",
+        "chalk": "^4.0.0",
+        "shelljs": "^0.8.4"
+    }
+}

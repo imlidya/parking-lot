@@ -1,0 +1,5 @@
+tap "homebrew/bundle"
+tap "homebrew/core"
+tap "linuxbrew/xorg"
+tap "telemachus/brew", "https://telemachus@bitbucket.org/telemachus/brew.git"
+brew "gcc"
