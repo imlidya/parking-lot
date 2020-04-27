@@ -1,14 +1,10 @@
-#!/usr/bin/env node
 const fs = require('fs'),
     chalk = require('chalk'),
 	readLine = require('readline')
 
-var	commandLineInputs = process.argv, // processing command line inputs
+var	commandLineInputs = process.argv, 
     interactiveMode = false
 
-/**
- * @description importing the parkingLot class
- */
 var Parking = require('./classes/parkingLot.js'),
 	parkingLot = new Parking()
 
@@ -25,8 +21,6 @@ if (commandLineInputs[commandLineInputs.length - 1].endsWith('.txt')) {
 		for (var i = 0; i < arr.length; i++) {
 			processUserCommands(arr[i])
         }
-
-        // returning to console once all the inputs are processed
         process.exit(1)
     })
 }
@@ -35,10 +29,6 @@ else {
     openInteractiveConsole()
 }
 
-/**
- * @description called when users want to interact via console
- * it process one command at a time
- */
 function openInteractiveConsole () {
 
     var prompts = readLine.createInterface({
@@ -46,8 +36,6 @@ function openInteractiveConsole () {
         output: process.stdout,
         terminal: false
     });
-
-    // option for user to enter commands
     if (interactiveMode) {
         prompts.question('Input: ', function (data) {
             processUserCommands(data)
@@ -55,12 +43,6 @@ function openInteractiveConsole () {
     }
 }
 
-/**
- *
- * @param {String} input entered via console
- * @description driver function for different commands for entered by users
- * calls respective functions of ParkingLot class based on commands
- */
 function processUserCommands (input) {
 	var userCommand = input.split(' ')[0],
 		totalParkingSlots,
