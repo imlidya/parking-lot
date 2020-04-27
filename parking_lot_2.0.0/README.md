@@ -31,9 +31,6 @@ For unit testing I made new folder named "tests" and using mocha and chai for te
 open new terminal 
 
 cd tests
-mocha test.js
-
-or you can: 
 
 npm run test : Runs all the tests.
 

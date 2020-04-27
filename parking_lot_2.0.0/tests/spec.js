@@ -8,7 +8,7 @@ var commands = [],
 
 describe('Test for reading input test data', function () {
     it('reading input.txt', function (done) {
-        fs.readFile('./data/input.txt', 'utf-8', function (err, data) {
+        fs.readFile('./data/parking_lot2.txt', 'utf-8', function (err, data) {
         if (err) {
             throw 'Unable to read input test file'
         }
@@ -71,8 +71,8 @@ describe('Testing Functions in ParkingLot class', function () {
     })
 
     it('Leaving from slot 6 with registration number KA-01-HH-3141 and 4 hours', function (done) {
-        var ele = parkingLot.leaveCarByCarNumber(commands[7])
-        assert.equal(ele, 'KA-01-HH-3141', 4)
+        var ele = parkingLot.leaveCarByCarNumber(commands[7])[0]
+        assert.equal(ele, 6)
         done()
     })
 
@@ -82,9 +82,9 @@ describe('Testing Functions in ParkingLot class', function () {
         done()
     })
 
-    it('Allocating Parking to User 7. Should Reallocate the nearest empty postion 1', function (done) {
+    it('Allocating Parking to User 7. Should Reallocate the nearest empty postion 6', function (done) {
         var ele = parkingLot.parkCar(commands[9])
-        assert.equal(ele, 4)
+        assert.equal(ele, 6)
         assert.notEqual(ele, 7)
         done()
     })
@@ -100,14 +100,14 @@ describe('Testing Functions in ParkingLot class', function () {
     })
 
     it('Leaving from slot 3 with registration number KA-01-BB-0001 and 4 hours', function(done) {
-        var ele = parkingLot.leaveCarByCarNumber(commands[11])
-        assert.equal(ele, 'KA-01-BB-0001', 4)
+        var ele = parkingLot.leaveCarByCarNumber(commands[11])[0]
+        assert.equal(ele, 3)
         done()
     })
 
     it('Leaving from slot 1 with registration number KA-01-HH-1234 and 6 hours', function(done) {
-        var ele = parkingLot.leaveCarByCarNumber(commands[12])
-        assert.equal(ele, 'KA-01-HH-1234', 6)
+        var ele = parkingLot.leaveCarByCarNumber(commands[12])[0]
+        assert.equal(ele, 1)
         done()
     })
 
@@ -146,7 +146,7 @@ describe('Testing Functions in ParkingLot class', function () {
 
     it('Checking status', function (done) {
         var ele = parkingLot.getParkingStatus()
-        assert.equal(ele.length, 6)
+        assert.equal(ele.length-1, 6)
         done()
     })
 

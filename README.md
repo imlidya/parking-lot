@@ -29,10 +29,8 @@ node src/index.js data/parking_lot2.txt
 ```
 For unit testing I made new folder named "tests" and using mocha and chai for testing. For testing : 
 open new terminal 
-cd tests
-mocha test.js
 
-or you can 
+cd tests
 
 npm run test : Runs all the tests.
 
