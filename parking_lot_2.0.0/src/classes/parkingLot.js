@@ -15,7 +15,7 @@ class ParkingLot {
     
     createParkingLot(input) {
         // get only number from input
-        this.max_parking_space = parseInt(input.split(" ")[1])
+        this.max_parking_space =  input.split(" ")[1]
         //console.log(num, 'number')
         //console.log(this.max_parking_space)
         if(this.max_parking_space <= 0) {
@@ -59,7 +59,7 @@ class ParkingLot {
 		  		}
 			  }
 			else {
-		  		throw new Error('Sorry, parking lot is full')
+		  		throw new Error(`There isn't empty slot`)
 		  	}
           }
           else {

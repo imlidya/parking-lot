@@ -1,33 +1,31 @@
 const assert = require('chai').assert,
     fs = require('fs'),
-    Parking = require('../src/classes/parkingLot.js');
+    Parking = require('../src/classes/parkingLot.js')
 
 var commands = [],
     totalParkings,
-    parkingLot = new Parking();
+    parkingLot = new Parking()
 
-// test specs for unit testing the methods in Parking Lot class
 describe('Test for reading input test data', function () {
     it('reading input.txt', function (done) {
         fs.readFile('./data/input.txt', 'utf-8', function (err, data) {
         if (err) {
-            throw 'Unable to read input test file';
+            throw 'Unable to read input test file'
         }
-        commands = JSON.parse(JSON.stringify(data)).split('\n');
-        done();
-        });
-    });
+        commands = JSON.parse(JSON.stringify(data)).split('\n')
+        done()
+        })
+    })
 
     it('checking commands', function (done) {
-        assert.equal(commands[0].split(' ')[0], 'create_parking_lot');
-        assert.equal(commands[1].split(' ')[0], 'park');
-        assert.equal(commands[7].split(' ')[0], 'leave');
-        assert.equal(commands[8], 'status');
-        done();
-    });
-});
+        assert.equal(commands[0].split(' ')[0], 'create_parking_lot')
+        assert.equal(commands[1].split(' ')[0], 'park')
+        assert.equal(commands[7].split(' ')[0], 'leave')
+        assert.equal(commands[8], 'status')
+        done()
+    })
+})
 
-// unit tests for functions in ParkingLot class
 describe('Testing Functions in ParkingLot class', function () {
 
     it('Creating a Parking lot', function (done) {
@@ -110,6 +108,45 @@ describe('Testing Functions in ParkingLot class', function () {
     it('Leaving from slot 1 with registration number KA-01-HH-1234 and 6 hours', function(done) {
         var ele = parkingLot.leaveCarByCarNumber(commands[12])
         assert.equal(ele, 'KA-01-HH-1234', 6)
+        done()
+    })
+
+    it('Leaving but registration number not found', function(done) {
+        try {
+            var ele = parkingLot.leaveCarByCarNumber(commands[13])
+        } catch (err) {
+            assert.notEqual(ele, 'KB-01-HG-8902', 2)
+        }
+        done()
+    })
+
+    it('Allocating Parking to User 9. Should Reallocate the nearest empty postion 1', function(done) {
+        var ele = parkingLot.parkCar(commands[14])
+        assert.equal(ele, 1)
+        assert.notEqual(ele, 9)
+        done()
+    })
+
+    it('Allocating Parking to User 10. Should Reallocate the nearest empty postion 1', function(done) {
+        var ele = parkingLot.parkCar(commands[15])
+        assert.equal(ele, 3)
+        assert.notEqual(ele, 10)
+        done()
+    })
+
+    it('Allocating Parking to User 11. Should indicate Parking is full.', function (done) {
+        try {
+            var ele = parkingLot.parkCar(commands[16])
+        }
+        catch (err) {
+            assert.notEqual(ele, 11)
+        }
+        done()
+    })
+
+    it('Checking status', function (done) {
+        var ele = parkingLot.getParkingStatus()
+        assert.equal(ele.length, 6)
         done()
     })
 
